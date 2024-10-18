@@ -7,10 +7,26 @@ import OnchainkitSvg from 'src/svg/OnchainkitSvg';
 import { useAccount } from 'wagmi';
 import LoginButton from '../components/LoginButton';
 import SignupButton from '../components/SignupButton';
+import { FundButton } from '@coinbase/onchainkit/fund';
+import { LifecycleStatus, Pay, PayButton, PayStatus } from '@coinbase/onchainkit/pay';
 
 export default function Page() {
   const { address } = useAccount();
 
+  const statusHandler = (status: LifecycleStatus) => {
+    const { statusName, statusData } = status;
+    switch (statusName) {
+      case 'success':
+      // handle success 
+      case 'paymentPending':
+      // handle payment pending
+      case 'error':
+      // handle error
+      default:
+      // handle 'init' state
+    }
+  }
+//40000000000000 = $0.10
   return (
     <div className="flex h-full w-96 max-w-full flex-col px-1 md:w-[1008px]">
       <section className="mt-6 mb-6 flex w-full flex-col md:flex-row">
